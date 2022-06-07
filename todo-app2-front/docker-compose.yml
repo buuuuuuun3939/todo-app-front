@@ -1,0 +1,13 @@
+version: '3'
+services:
+
+  todo-front:
+    build: .
+    command: /bin/sh -c "cd todo-front && export HOST=0.0.0.0 && npm start"
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/todo-app2-front
+    ports:
+      - "3030:3000"
+    #stdin_open: true
