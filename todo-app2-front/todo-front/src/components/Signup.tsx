@@ -56,9 +56,10 @@ const Signup: React.FC = () => {
         <TextField onChange={onPasswordConfirmationChange} id="standard-basic" label="パスワード確認" variant="standard" />
         <br />
         <br />
-        <Button onSubmit={post} variant="outlined">新規登録</Button>
+        <Button onClick={post} variant="outlined">新規登録</Button>
       </form>
     </div>
+ 
   );
 }
 
