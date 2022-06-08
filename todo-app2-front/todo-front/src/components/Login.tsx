@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './Login.css';
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import FormGroup from '@mui/material/FormGroup';
-import { spacing } from '@mui/system';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import axios from 'axios';
 
-function Login() {
+const Login:React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const auth_url = "http://localhost:3000/auth";
+  const post = () => { axios.post(auth_url, { email: email,
+                                              password: password,
+  }).then((response) => alert(response.status))};
+
+  const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+  const onPasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
   return (
     <div className="Login">
       <div className="LoginForm">
-        <h1>ユーザー新規登録</h1>
+        <h1>ユーザーログイン</h1>
         <br />
-        <TextField id="standard-basic" label="メールアドレス" variant="standard" />
+        <TextField onChange={onEmailChange} id="standard-basic" label="メールアドレス" variant="standard" />
         <br />
-        <TextField id="standard-basic" label="パスワード" variant="standard" />
+        <TextField onChange={onPasswordChange} id="standard-basic" label="パスワード" variant="standard" />
         <br />
-        <Button variant="outlined">ログイン</Button>
+        <Button onClick={post} variant="outlined">ログイン</Button>
       </div>
-
-      
     </div>
   );
 }
