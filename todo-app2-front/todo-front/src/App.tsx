@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -20,6 +21,12 @@ function App() {
         </a>
       </header>
     </div>
+    /*
+    <Switch>
+      <Route path="/Signup"></Route>
+      <Route path="/Login"></Route>
+    </Switch>
+    */
   );
 }
 

@@ -10,4 +10,8 @@ services:
       - .:/todo-app2-front
     ports:
       - "3030:3000"
-    #stdin_open: true
+    networks: [todo-app2_default]
+
+networks:
+  todo-app2_default:
+    driver: bridge
