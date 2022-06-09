@@ -54,6 +54,7 @@ const Signup: React.FC = () => {
         <Button onClick={post} variant="outlined">新規登録</Button>
       </form>
     </div>
+ 
   );
 }
 
