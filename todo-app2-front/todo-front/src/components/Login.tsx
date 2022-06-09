@@ -18,7 +18,8 @@ const Login:React.FC = () => {
   const auth_url = "http://localhost:3000/auth";
   const post = () => { axios.post(auth_url, { email: email,
                                               password: password,
-  }).then((response) => dispatch(changeDisplayName(response.data)))};
+                      }).then((response) => dispatch(changeDisplayName(response.data)))
+                        .catch(error => alert(error.response.data["message"]))};
 
 
   const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {

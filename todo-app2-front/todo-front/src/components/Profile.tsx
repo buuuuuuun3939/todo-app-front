@@ -4,12 +4,21 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import axios from 'axios';
 
+import { CookiesProvider, useCookies } from 'react-cookie';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../app/store';
+
 function Profile() {
+  const user = useSelector((state: RootState) => state.display_name);
+  const dispatch = useDispatch();
+
+  const [cookies] = useCookies();
   const [display_name, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [old_password, setOldPassword] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
+  
 
   const onDisplayNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);

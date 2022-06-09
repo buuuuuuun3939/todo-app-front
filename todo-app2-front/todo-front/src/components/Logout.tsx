@@ -9,7 +9,8 @@ const Logout: React.FC = () => {
 
   const auth_url = "http://localhost:3000/auth";
   const logout = () => { axios.delete(auth_url)
-                      .then(() => dispatch(changeDisplayName("名無し")))};
+                      .then(() => dispatch(changeDisplayName("名無し")))
+                      .catch(error => alert(error.response.data["message"]))};
 
   return(
     <div onLoad={logout} className="Logout">
