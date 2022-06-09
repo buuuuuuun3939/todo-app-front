@@ -35,9 +35,6 @@ const Login: React.FC = () => {
         <br />
         <Button onClick={post} variant="outlined">ログイン</Button>
       </div>
-      {/*
-      {authError && let errorAlert = () => {alert("hoge")}};
-      */}
     </div>
   );
 }

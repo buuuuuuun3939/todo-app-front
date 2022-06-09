@@ -33,7 +33,7 @@ function Profile() {
                                         old_password: old_password,
                                         password: password,
                                         password_confirmation: password_confirmation
-  })};
+  }).then((response) => alert(response))};
 
   
 
@@ -52,7 +52,7 @@ function Profile() {
         <br />
         <TextField onChange={onPasswordConfirmationChange} id="standard-basic" label="変更後のパスワード再入力" variant="standard" />
         <br />
-        <Button onSubmit={post} variant="outlined">ログイン</Button>
+        <Button onClick={post} variant="outlined">ログイン</Button>
       </div>
     </div>
   );
