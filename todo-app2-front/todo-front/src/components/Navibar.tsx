@@ -13,14 +13,22 @@ import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import axios from 'axios';
+import Logout from './Logout';
+import Profile from './Profile';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { changeDisplayName } from '../slices/auth';
+import { RootState } from '../app/store';
+import { Link } from 'react-router-dom'
+
 
 const Navibar:React.FC = () => {
+  // storeからstateを取得
+  const user = useSelector((state: RootState) => state.display_name);
+  const dispatch = useDispatch();
+
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-  //const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //  setAuth(event.target.checked);
-  //};
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -30,13 +38,17 @@ const Navibar:React.FC = () => {
     setAnchorEl(null);
   };
 
+  const auth_url = "http://localhost:3000/auth";
+  const logout = () => { axios.delete(auth_url)
+                      .then((response) => dispatch(changeDisplayName(response.data)))};
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            ここにログインしたユーザー名
+            { user.display_name }
           </Typography>
           {auth && (
             <div>
@@ -65,12 +77,13 @@ const Navibar:React.FC = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <a href="/">
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                </a>
-                <a href="/auth">
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                </a>
+                
+                <Link to="/profile">
+                  <MenuItem>Profile</MenuItem>
+                </Link>
+                <Link to="/logout">
+                  <MenuItem onClick={logout}>Logout</MenuItem>
+                </Link>
               </Menu>
             </div>
           )}

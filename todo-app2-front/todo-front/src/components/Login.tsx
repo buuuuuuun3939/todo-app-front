@@ -1,18 +1,24 @@
 import React, { ChangeEvent, useState } from 'react';
 import './Login.css';
-
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
+import { useDispatch } from 'react-redux';
+import { changeDisplayName } from '../slices/auth';
+import { RootState, store } from '../app/store';
+
 const Login:React.FC = () => {
+  const dispatch = useDispatch();
+
+  // フォーム用のstate
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const auth_url = "http://localhost:3000/auth";
   const post = () => { axios.post(auth_url, { email: email,
                                               password: password,
-  }).then((response) => alert(response.status))};
+  }).then((response) => dispatch(changeDisplayName(response.data)))};
 
 
   const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
