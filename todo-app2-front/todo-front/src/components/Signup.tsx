@@ -1,8 +1,7 @@
-import React, { ChangeEvent, useState, useEffect } from 'react';
+import React, { ChangeEvent, useState} from 'react';
 import './Signup.css';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-//import { EmailIcon } from '@mui/icons-material/Email';
 import axios from 'axios';
 
 const Signup: React.FC = () => {
@@ -32,22 +31,18 @@ const Signup: React.FC = () => {
   };
 
 
-  const url = "http://localhost:3000/users";
-  //axios.get<User>(url).then((res) => {
-    //console.log(res.data);
-  //})
-  const post = () => { axios.post(url, { display_name: display_name,
-                                         email: email,
-                                         password: password,
-                                         password_confirmation: password_confirmation
-  })};
+  const users_url = "http://localhost:3000/users";
+  const post = () => { axios.post(users_url, { display_name: display_name,
+                                               email: email,
+                                               password: password,
+                                               password_confirmation: password_confirmation
+  }).then((response) => alert(response.status))};
 
   return (
     <div className="Signup">
       <form className="SignupForm">
         <h1>ユーザー新規登録</h1>
         <TextField onChange={onDisplayNameChange} id="standard-basic" label="表示名" variant="standard" />
-        {/*<Email />*/}
         <br />
         <TextField onChange={onEmailChange} id="standard-basic" label="メールアドレス" variant="standard" />
         <br />

@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
 import Login from './components/Login';
-import Profile from './components/Profile';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,17 +15,14 @@ root.render(
     {/*
       <App />
     */}
-    
+
     {/*
       <Signup />
     */}
-    {
-      <Login />
-    }
-    {/*
-      <Profile />
-    */}
-  </React.StrictMode>
+    <Login />
+
+    </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
