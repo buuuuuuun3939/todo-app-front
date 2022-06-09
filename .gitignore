@@ -1,2 +1,6 @@
-
+todo-app2-front/node_modules/
+todo-app2-front/todo-front/node_modules/
 *node_modules/
+
+todo-app2-front/package-lock.json
+todo-app2-front/todo-front/package-lock.json
