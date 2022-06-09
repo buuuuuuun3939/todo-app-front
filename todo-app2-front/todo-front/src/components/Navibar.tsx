@@ -24,7 +24,7 @@ import { Link } from 'react-router-dom'
 
 const Navibar:React.FC = () => {
   // storeからstateを取得
-  const user = useSelector((state: RootState) => state.display_name);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const [auth, setAuth] = React.useState(true);

@@ -9,12 +9,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
 
 function Profile() {
-  const user = useSelector((state: RootState) => state.display_name);
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   const [cookies] = useCookies();
-  const [display_name, setDisplayName] = useState("");
-  const [email, setEmail] = useState("");
+  const [display_name, setDisplayName] = useState(user.display_name);
+  const [email, setEmail] = useState(user.email);
   const [old_password, setOldPassword] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");

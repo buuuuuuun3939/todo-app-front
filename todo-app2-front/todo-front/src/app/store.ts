@@ -2,11 +2,11 @@ import { configureStore } from '@reduxjs/toolkit'
 import { initialState as UserState, UserReducer } from '../slices/auth';
 
 export class RootState {
-  display_name = UserState;
+  user = UserState;
 };
 
 const reducer = {
-  display_name: UserReducer,
+  user: UserReducer,
 };
 
 export const store = configureStore({

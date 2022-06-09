@@ -4,11 +4,13 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
-import { useDispatch } from 'react-redux';
-import { changeDisplayName } from '../slices/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeDisplayName, changeEmail } from '../slices/auth';
 import { RootState, store } from '../app/store';
 
 const Login:React.FC = () => {
+  // storeからstateを取得
+  const user = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
 
   // フォーム用のstate
@@ -19,6 +21,7 @@ const Login:React.FC = () => {
   const post = () => { axios.post(auth_url, { email: email,
                                               password: password,
                       }).then((response) => dispatch(changeDisplayName(response.data)))
+                        //.then((response) => dispatch(changeEmail(response.data))) // うまく動作しない
                         .catch(error => alert(error.response.data["message"]))};
 
 
