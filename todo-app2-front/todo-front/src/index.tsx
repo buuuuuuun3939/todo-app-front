@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Signup from './components/Signup';
 import Login from './components/Login';
-
+import Navibar from './components/Navibar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,6 +19,7 @@ root.render(
     {/*
       <Signup />
     */}
+    <Navibar />
     <Login />
 
     </React.StrictMode>
